@@ -1,0 +1,22 @@
+INFO 2018-11-20 16:32:18,987 basehttp 124 "GET / HTTP/1.1" 200 1714
+WARNING 2018-11-20 16:32:19,200 base 152 Not Found: /favicon.ico
+WARNING 2018-11-20 16:32:19,201 basehttp 124 "GET /favicon.ico HTTP/1.1" 404 1967
+INFO 2018-11-20 19:56:34,123 basehttp 124 "GET / HTTP/1.1" 200 1714
+WARNING 2018-11-20 19:56:34,257 base 152 Not Found: /favicon.ico
+WARNING 2018-11-20 19:56:34,259 basehttp 124 "GET /favicon.ico HTTP/1.1" 404 1967
+INFO 2018-11-20 19:56:35,109 basehttp 124 "GET / HTTP/1.1" 200 1714
+WARNING 2018-11-20 19:56:35,177 base 152 Not Found: /favicon.ico
+WARNING 2018-11-20 19:56:35,179 basehttp 124 "GET /favicon.ico HTTP/1.1" 404 1967
+WARNING 2018-11-20 19:56:43,809 base 152 Not Found: /categories/163/
+WARNING 2018-11-20 19:56:43,809 base 152 Not Found: /categories/163/skus/
+WARNING 2018-11-20 19:56:43,811 basehttp 124 "GET /categories/163/ HTTP/1.1" 404 1985
+INFO 2018-11-20 19:56:43,813 basehttp 124 "OPTIONS /cart/ HTTP/1.1" 200 0
+WARNING 2018-11-20 19:56:43,820 base 152 Not Found: /categories/163/hotskus/
+WARNING 2018-11-20 19:56:43,821 basehttp 124 "GET /categories/163/hotskus/ HTTP/1.1" 404 2009
+WARNING 2018-11-20 19:56:43,823 basehttp 124 "GET /categories/163/skus/?page=1&page_size=5&ordering=-create_time HTTP/1.1" 404 2049
+INFO 2018-11-20 19:57:09,495 basehttp 124 "GET / HTTP/1.1" 200 1714
+WARNING 2018-11-20 19:57:09,548 base 152 Not Found: /favicon.ico
+WARNING 2018-11-20 19:57:09,552 basehttp 124 "GET /favicon.ico HTTP/1.1" 404 1967
+INFO 2018-11-20 19:57:10,313 basehttp 124 "GET / HTTP/1.1" 200 1714
+WARNING 2018-11-20 19:57:10,338 base 152 Not Found: /favicon.ico
+WARNING 2018-11-20 19:57:10,339 basehttp 124 "GET /favicon.ico HTTP/1.1" 404 1967
