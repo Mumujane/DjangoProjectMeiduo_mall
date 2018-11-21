@@ -63,9 +63,9 @@ MIDDLEWARE = [
 
 # 添加CORS白名单
 CORS_ORIGIN_WHITELIST = (
-    '127.0.0.1:8080',
-    'localhost:8080',
-    'www.meiduo.site:8080',
+    '127.0.0.1:8000',
+    'localhost:8000',
+    'www.meiduo.site:8000',
 )
 
 CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
@@ -156,7 +156,15 @@ CACHES = {
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
+    },
+    'verifications':{
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
     }
+
 }
 
 # session保存到缓存当中

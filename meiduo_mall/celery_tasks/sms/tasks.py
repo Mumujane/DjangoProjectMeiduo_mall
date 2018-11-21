@@ -19,7 +19,7 @@ def send_sms_code(mobile, code, expires):
     :return:
     """
     try:
-        cpp = CCP()
+        ccp = CCP()
         result = ccp.send_template_sms(mobile, [code, expires], SMS_CODE_TEMP_ID)
     except Exception as e:
         logger.error(" 发送验证码短信[异常] [mobile: %s, message: %s]" % (mobile ,e))

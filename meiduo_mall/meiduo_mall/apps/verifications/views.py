@@ -1,11 +1,14 @@
 from django.shortcuts import render
+from django_filters import constants
 
 from django_redis import get_redis_connection
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from celery_tasks.sms import tasks as sms_tasks
+from celery_tasks.sms.tasks import send_sms_code
 
 import random
+
+
 # Create your views here.
 class SMSCodeView(APIView):
     def get(self, request, mobile):
@@ -22,9 +25,9 @@ class SMSCodeView(APIView):
         :return:
         """
         redis_conn = get_redis_connection("verifications")
-        send_flag = redis_conn.get("send_flag_%s" %mobile)
+        send_flag = redis_conn.get("send_flag_%s" % mobile)
         if send_flag:
-            return Response({"message": "短信发送频繁"}, status = 400)
+            return Response({"message": "短信发送频繁"}, status=400)
         sms_code = random.randint(10000, 99999)
 
         # # def setex(self, name, value, time):
@@ -34,8 +37,8 @@ class SMSCodeView(APIView):
         # redis_conn.setex("smsflag_%s" % mobile, 60 ,1)
 
         # 获取管道对象
-        pl = redis_conn.pipline()
-        pl.setex('sms_%s' % mobile, 5*60, sms_code)
+        pl = redis_conn.pipeline()
+        pl.setex('sms_%s' % mobile, 5 * 60, sms_code)
         pl.setex('smsflag_%s' % mobile, 60, 1)
 
         # 执行管道中所有命令
@@ -44,19 +47,9 @@ class SMSCodeView(APIView):
         # 发送短信给用户手机
         # CCP().send_template_sms(mobile)
 
-        sms_code_expires = constants.SMS_CODE_REDIS_EXPIRE // 60
+        # sms_code_expires = constants.SMS_CODE_REDIS_EXPIRE // 60
 
-        sms_tasks.delay(mobile, sms_code, sms_code_expires)
-
+        send_sms_code.delay(mobile, sms_code, 5)
+        print("mobile: %s, sms_code: %s" % (mobile, sms_code))
 
         return Response({'message': 'OK'})
-
-
-
-
-
-
-
-
-
-
